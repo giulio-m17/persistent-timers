@@ -1,0 +1,11 @@
+version: '2'
+services:   
+    sample-service:
+        image: sample-service
+        build:
+          context: ./
+          dockerfile: ./services/sample-service/docker/Dockerfile
+        ports:
+         - "3095:8080"
+    empty-payara:
+        image: payara/micro:5.191

@@ -8,4 +8,4 @@ services:
         ports:
          - "3095:8080"
     empty-payara:
-        image: payara/micro:5.191
+        image: payara/micro:5.183

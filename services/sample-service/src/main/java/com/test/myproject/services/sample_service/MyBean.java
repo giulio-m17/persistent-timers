@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.ejb.TimedObject;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
@@ -17,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 @Path("timers")
 @Stateless
-public class MyBean implements TimedObject {
+public class MyBean {
 	
 	private Logger LOGGER = LoggerFactory.getLogger(getClass());
 	
@@ -34,8 +33,7 @@ public class MyBean implements TimedObject {
 		timerService.createIntervalTimer(1000, 10000, new TimerConfig(System.currentTimeMillis(), true));
 	}
 	
-	//	@Timeout
-	@Override
+	@Timeout
 	public void ejbTimeout(Timer timer) {
 		LOGGER.info("Timing out. " + timer.getInfo());
 		LOGGER.info("Timers: "
